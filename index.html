@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Notes App</title>
+</head>
+<body>
+    <div id="notes_list">
+        <h1 id="hader">My Notes Board</h1>
+        <div>
+            <input type="text" id="notes_input" class="clear_inputs">
+        </div>
+        <div>
+            <label for="">Date:</label>
+            <input type="date" id="notes_date" class="clear_inputs">
+        </div>
+        <div>
+            <label for="">Time:</label>
+            <input type="time" id="notes_time" class="clear_inputs">
+        </div>
+        <div>
+            <button onclick="printNewNotes(event)" id="button_creat">create</button>
+        </div>
+    </div>
+
+    <div class="all-notes">
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
