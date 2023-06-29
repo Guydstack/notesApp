@@ -1,13 +1,57 @@
 body{
     background-image:url(img/background.jpg);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16;
+    padding: 10px;
+
 }
+
+h1{
+    text-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;}
+
+#hader{
+    font-size: 4em;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+label{
+    font-size: 1.2em;
+}
+
 
 #notes_list{
     text-align: center;
 }
 
+#notes_input{
+    text-align: left !important;
+}
 
+#notes_date, #notes_time, #chouse_color{
+    width: 150px;
+    height: 30px;
+    padding: 0;
+    margin: 10px;
+}
 
+textarea{
+    resize: none;
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+#button_creat{
+    width: 250px;
+    height: 50px;
+    border-radius: 7px;
+    border: none;
+    padding: 0;
+    margin: 10px;
+    font-weight: 300;
+}
 
  .all-notes{
     display: grid;
@@ -16,5 +60,73 @@ body{
     gap: 10px;
     padding: 10px;
  } 
+
+
+.button_remove{
+    margin: 0px 130px ;
+    border: none;
+    background-color: transparent;
+}
+
+
+                                            /* Notes Color Option */
+/* .background-img{ 
+   
+    background-image:url(img/note.png); 
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+} */
+
+.note_Yellow{
+        /* Yellow */ 
+        background-image:url(img/notes-color/background-yellow.png); 
+        background-repeat: no-repeat;
+        overflow-x: hidden;
+
+}
+
+.note_Green{
+        /* Green */ 
+        background-image:url(img/notes-color/background-green.png); 
+        background-repeat: no-repeat;
+        overflow-x: hidden;
+}
+.note_LightBlue{
+        /* LightBlue */ 
+        background-image:url(img/notes-color/background-lightblue.png); 
+        background-repeat: no-repeat;
+        overflow-x: hidden;
+}
+
+.note_Orange{
+        /* Orange */
+        background-image:url(img/notes-color/background-orange.png); 
+        background-repeat: no-repeat;
+        overflow-x: hidden;
+}
+
+.note_Purple{
+        /* Purple */
+        background-image:url(img/notes-color/background-purple.png); 
+        background-repeat: no-repeat;
+        overflow-x: hidden;
+}
+
+.note_Pink{
+        /* Pink */
+        background-image:url(img/notes-color/background-pink.png); 
+        background-repeat: no-repeat;
+        overflow-x: hidden;
+}
+
+                                            /* Notes Color option END */
+
+
+.text-style{
+    width: 180px;
+    height: 100px;
+    overflow-wrap: break-word;
+}
+
 
 
