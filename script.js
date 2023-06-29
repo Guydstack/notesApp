@@ -61,6 +61,9 @@ function printNewNotes(e){
     notes.push(myNotes)
     localStorage.setItem("notes",JSON.stringify(notes))
     notesInput.value = '';
+    notesDate.value = todayDate;
+    notesTime.value = todayTime;
+
 }
 
 
@@ -93,7 +96,8 @@ function removeNotes(id) {
 
 // Remove all notes
 function removeAllNotes() {
-    localStorage.removeItem("notes");
+    localStorage.clear()
+    // localStorage.removeItem("notes");
     const newUserNotes = document.querySelector(".all-notes")
     newUserNotes.innerHTML = "";
   }
