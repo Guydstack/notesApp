@@ -78,10 +78,9 @@ input:focus, textarea:focus, select:focus{
 
 .notes-style{
     justify-self: center;
-
+    margin-left: 10px;
 }
 }
-
 
 .button_remove{
     margin: 0px 130px ;
