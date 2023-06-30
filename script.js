@@ -5,14 +5,23 @@ const notesTime = document.querySelector("#notes_time")
 const newUserNotes = document.querySelector(".all-notes")
 const noteColor = document.querySelector("#chouse_color")
 
+                            // Date and Time
 // Get date and time
-const today = new Date();
+const today = new Date()
 const todayDate = `${today.getFullYear()}-0${today.getMonth() + 1}-${today.getDate()}`
-const todayTime = `${today.getHours()}:${today.getMinutes()}`
 
+// Pad minutes with leading zero if less than 10
+const minutes = today.getMinutes().toString().padStart(2, '0'); 
+const hours = today.getHours().toString().padStart(2, '0'); 
+// Update the hours and minuts
+const todayTime = `${hours}:${minutes}`
+// take user input 
 notesDate.value = todayDate
 notesTime.value = todayTime
+                            
+                            // Date and Time END
 
+                            
 // Save user data in the localstorage
 const notes = JSON.parse(localStorage.getItem("notes")) || []
 
@@ -39,7 +48,7 @@ function getRandomInt() {
 function showHtml(notesEl){
     newUserNotes.innerHTML += `
    
-        <div id="new_notes_${notesEl.id}" class="note_${notesEl.color}"> 
+        <div id="new_notes_${notesEl.id}" class="note_${notesEl.color} notes-style"> 
            <div style="padding: 50px 50px 20px 50px;"> 
             <p class="text-style">${notesEl.notes}</p>
             <div>${notesEl.date}</div>

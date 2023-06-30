@@ -3,7 +3,6 @@ body{
     font-family: 'Roboto', sans-serif;
     font-size: 16;
     padding: 10px;
-
 }
 
 h1{
@@ -56,19 +55,32 @@ input:focus, textarea:focus, select:focus{
  .all-notes{
     display: grid;
     grid-template-columns: auto auto auto auto;
-    grid-template-rows: 300px 300px 300px 300px;
+    grid-template-rows: auto auto auto auto;
     gap: 10px;
     padding: 10px;
  } 
 
   
-  /* Media query for screens smaller than 800px ---> effecting only the notes */
-  @media (max-width: 800px) {
+  /* Media query for screens smaller than 900px ---> effecting only the notes */
+  @media only screen and (max-width: 900px) {
     .all-notes {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      grid-template-rows: repeat(4, 300px);
+      grid-template-rows: repeat(4, auto);
     }
   }
+
+  /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+  #notes_input{
+    width: 80%;
+}
+
+.notes-style{
+    justify-self: center;
+
+}
+}
 
 
 .button_remove{
