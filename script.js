@@ -18,9 +18,21 @@ const todayTime = `${hours}:${minutes}`
 // take user input 
 notesDate.value = todayDate
 notesTime.value = todayTime
+
+// Adding a leading zero if the month and day values only contain a single digit
+function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+    }
+// Function that format the date to day/month/year
+    function formatDate(date) {
+    return [
+        padTo2Digits(date.getDate()),
+        padTo2Digits(date.getMonth() + 1),
+        date.getFullYear(),
+    ].join('/');
+    }
                             
                             // Date and Time END
-
                             
 // Save user data in the localstorage
 const notes = JSON.parse(localStorage.getItem("notes")) || []
@@ -51,7 +63,7 @@ function showHtml(notesEl){
         <div id="new_notes_${notesEl.id}" class="note_${notesEl.color} notes-style"> 
            <div style="padding: 50px 50px 20px 50px;"> 
             <p class="text-style">${notesEl.notes}</p>
-            <div>${notesEl.date}</div>
+            <div>${formatDate(new Date(notesEl.date))}</div>
             <div>${notesEl.time}</div>
            </div> 
            <button onclick="removeNotes(${notesEl.id})" class="button_remove"><span class="material-symbols-outlined">

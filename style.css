@@ -5,13 +5,11 @@ body{
     padding: 10px;
 }
 
-h1{
-    text-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;}
-
 #hader{
     font-size: 4em;
     text-transform: uppercase;
     font-weight: 800;
+    filter: drop-shadow(-1px 10px 5px #00000080);
 }
 
 label{
@@ -100,27 +98,30 @@ input:focus, textarea:focus, select:focus{
 .note_Yellow{
         /* Yellow */ 
         background-image:url(img/notes-color/background-yellow.png); 
+        filter: drop-shadow(-1px 10px 15px #00000074);
         background-repeat: no-repeat;
         overflow-x: hidden;
-
 }
 
 .note_Green{
         /* Green */ 
         background-image:url(img/notes-color/background-green.png); 
+        filter: drop-shadow(-1px 10px 15px #00000074);
         background-repeat: no-repeat;
         overflow-x: hidden;
 }
 .note_LightBlue{
         /* LightBlue */ 
         background-image:url(img/notes-color/background-lightblue.png); 
+        filter: drop-shadow(-1px 10px 15px #00000074);
         background-repeat: no-repeat;
         overflow-x: hidden;
 }
 
 .note_Orange{
         /* Orange */
-        background-image:url(img/notes-color/background-orange.png); 
+        background-image:url(img/notes-color/background-orange.png);
+        filter: drop-shadow(-1px 10px 15px #00000074); 
         background-repeat: no-repeat;
         overflow-x: hidden;
 }
@@ -128,6 +129,7 @@ input:focus, textarea:focus, select:focus{
 .note_Purple{
         /* Purple */
         background-image:url(img/notes-color/background-purple.png); 
+        filter: drop-shadow(-1px 10px 15px #00000074);
         background-repeat: no-repeat;
         overflow-x: hidden;
 }
@@ -135,6 +137,7 @@ input:focus, textarea:focus, select:focus{
 .note_Pink{
         /* Pink */
         background-image:url(img/notes-color/background-pink.png); 
+        filter: drop-shadow(-1px 10px 15px #00000074);
         background-repeat: no-repeat;
         overflow-x: hidden;
 }
