@@ -7,8 +7,19 @@ const noteColor = document.querySelector("#chouse_color")
 
                             // Date and Time
 // Get date and time
-const today = new Date()
-const todayDate = `${today.getFullYear()}-0${today.getMonth() + 1}-${today.getDate()}`
+const today = new Date();
+let month = today.getMonth() + 1;
+let day = today.getDate();
+let year = today.getFullYear();
+// Adding a 0 to month abd day if it less then 10 
+if (month < 10) {
+    month = `0${month}`;
+  }
+if (day < 10) {
+    day = `0${day}`;
+  }
+const todayDate = `${year}-${month}-${day}`
+
 
 // Pad minutes with leading zero if less than 10
 const minutes = today.getMinutes().toString().padStart(2, '0'); 
