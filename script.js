@@ -103,17 +103,31 @@ function editNote(id){
   // Catch the note by ID
   const pElement = document.querySelector(`#new_notes_${id} .text-style`);
   const updatedValue = pElement.innerText;
-
   
+
   // Retrieve existing notes from localStorage
   let notes = JSON.parse(localStorage.getItem("notes")) || []
 
   // Find the note with the matching ID and update its "notes" property
   notes = notes.map(note => {
     if (note.id === id) {
-      note.notes = updatedValue;
+      note.notes = updatedValue.replaceAll("\n","<br/>\r\n");
     }
     return note;
+  });
+
+  // Add a keydown event to the textarea of the note 
+  // and limit user with max 3 line, and 100 characters 
+  pElement.addEventListener('keydown', function(event) {
+    const lines = pElement.innerText.split('\n');
+    
+    if (event.key === 'Enter' && lines.length === 3) {
+      event.preventDefault();
+    }
+    
+    if (pElement.value.length >= 100 && event.key !== 'Backspace') {
+      event.preventDefault();
+    }
   });
 
   // Save the updated notes array back to localStorage
