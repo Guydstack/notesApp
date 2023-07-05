@@ -151,5 +151,7 @@ input:focus, textarea:focus, select:focus{
     overflow-wrap: break-word;
 }
 
-
-
+/* Center the icons in the Notes to be in the same line as the date and time */
+#icon_style{
+    vertical-align: middle;
+}

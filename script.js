@@ -73,9 +73,20 @@ function showHtml(notesEl){
    
         <div id="new_notes_${notesEl.id}" class="note_${notesEl.color} notes-style"> 
            <div style="padding: 50px 50px 20px 50px;"> 
-            <p class="text-style">${notesEl.notes}</p>
-            <div>${formatDate(new Date(notesEl.date))}</div>
-            <div>${notesEl.time}</div>
+            <p class="text-style" 
+            contenteditable="true" 
+            onkeypress="return (this.innerText.length <= 100)" 
+            onpaste="return false;" 
+            oninput="editNote(${notesEl.id})">
+            ${notesEl.notes}</p>
+            <div>
+              <span class="material-symbols-outlined" id="icon_style">calendar_month</span>
+              <span>${formatDate(new Date(notesEl.date))}</span>
+            </div>
+            <div>
+              <span class="material-symbols-outlined" id="icon_style">schedule</span>
+              <span>${notesEl.time}</span>
+            </div>
            </div> 
            <button onclick="removeNotes(${notesEl.id})" class="button_remove"><span class="material-symbols-outlined">
            delete
@@ -85,10 +96,36 @@ function showHtml(notesEl){
     `
 }
 
+
+// Edit existing notes
+function editNote(id){
+
+  // Catch the note by ID
+  const pElement = document.querySelector(`#new_notes_${id} .text-style`);
+  const updatedValue = pElement.innerText;
+
+  
+  // Retrieve existing notes from localStorage
+  let notes = JSON.parse(localStorage.getItem("notes")) || []
+
+  // Find the note with the matching ID and update its "notes" property
+  notes = notes.map(note => {
+    if (note.id === id) {
+      note.notes = updatedValue;
+    }
+    return note;
+  });
+
+  // Save the updated notes array back to localStorage
+  localStorage.setItem("notes", JSON.stringify(notes));
+}
+
+
+
 // Get user Value and add it to Notes class 
 function printNewNotes(e){
     e.preventDefault()
-    const myNotes = new Notes(notesInput.value, notesDate.value, notesTime.value, noteColor.value)
+    const myNotes = new Notes(notesInput.value.replaceAll("\n","<br/>\r\n"), notesDate.value, notesTime.value, noteColor.value)
     showHtml(myNotes)
     notes.push(myNotes)
     localStorage.setItem("notes",JSON.stringify(notes))
@@ -97,21 +134,6 @@ function printNewNotes(e){
     notesTime.value = todayTime;
 
 }
-
-
-// notes.forEach(showHtml);
-
-
-// function removeNotes(id){
-// let noteBackground = document.querySelector(`#new_notes_${id}`);
-// let index = notes.indexOf(noteBackground);
-// notes.splice(index)
-// localStorage.setItem("notes",JSON.stringify(notes))
-// // noteBackground.setAttribute('style', 'background-image:none !important');
-// // noteBackground.innerHTML = "";
-// // noteBackground.remove();
-// removeFadeOut(noteBackground, 2000);
-// }
 
 
 // Remove notes
@@ -140,13 +162,28 @@ notes.forEach(showHtml);
 
 
 // Let user send value by pressing Enter on the keyboard
-notesInput.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      document.getElementById("button_creat").click();
-      notesInput.value = '';
-    } 
-  });
+// notesInput.addEventListener("keypress", function(event) {
+//     if (event.key === "Enter") {
+//       event.preventDefault();
+//       document.getElementById("button_creat").click();
+//       notesInput.value = '';
+//     } 
+//   });
+
+
+// Add a keydown event to the textarea and limit user with max 3 line, and 100 characters 
+notesInput.addEventListener('keydown', function(event) {
+  const lines = notesInput.value.split('\n');
+  
+  if (event.key === 'Enter' && lines.length === 3) {
+    event.preventDefault();
+  }
+  
+  if (notesInput.value.length >= 100 && event.key !== 'Backspace') {
+    event.preventDefault();
+  }
+});
+
 
 
 // Effect Fadeout when user remove a note
